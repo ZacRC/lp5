@@ -6,99 +6,86 @@
   <title>ClipAI - Streamline Your Workflow</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-/* Custom styles */
-body {
-  background-color: #F5F5FF; /* Light purple background */
-  color: #333333;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+    body {
+      background-color: #F5F5FF;
+      color: #333333;
+      overflow-x: hidden;
+    }
+    .navbar-bg {
+      background-color: #FFF;
+      color: #333333;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px; /* Ensures navbar does not stretch too far on wider screens */
+      margin: 20px auto;
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* Rest of your CSS styles */
+    
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hover-scale {
+      transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    }
+    .hover-scale:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    .accordion-button {
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+    .accordion-button:hover {
+      background-color: #E5E5FF; /* Light purple hover */
+      color: #5B47FF; /* Matching text */
+    }
+    /* Accordion animation */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+    }
+    .accordion-content.active {
+      max-height: 500px; /* Adjust as needed */
+    }
 
-.navbar-bg {
-  background-color: #FFF; /* White navbar */
-  color: #333333;
-  border-radius: 20px; /* Circular rectangle shape */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  margin: 20px auto; /* Center horizontally, only affects horizontal margins */
-  padding: 10px 100px; /* Adjust padding */
-  display: flex; /* Use flexbox for alignment */
-  justify-content: space-between; /* Align items horizontally */
-  align-items: center; /* Align items vertically */
-  width: calc(50% - 150px); /* Reduce width by 150 pixels */
-  animation: slideDown 1s ease forwards; /* Animation */
-  animation-delay: 0.5s; /* Delay for animation */
-  opacity: 0; /* Hide initially */
-  position: fixed; /* Fixed positioning to float on the page */
-  top: 30px; /* Distance from the top */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Align center */
-  z-index: 1000; /* Ensures it is on top of other content */
-}
+    @keyframes fade-in-slide {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%) translateX(-50%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) translateX(-50%);
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hover-scale {
-  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.accordion-button {
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.accordion-button:hover {
-  background-color: #E5E5FF; /* Light purple hover */
-  color: #5B47FF; /* Matching text */
-}
-
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
-}
-
-.accordion-content.active {
-  max-height: 500px; /* Adjust as needed */
-}
-
-@keyframes fade-in-slide {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-fade-in-slide {
-  animation: fade-in-slide 1s ease forwards;
-}
+    .animate-fade-in-slide {
+      animation: fade-in-slide 1s ease forwards;
+    }
 
 @keyframes fade-in-slide-right {
   from {
@@ -110,45 +97,45 @@ body {
     transform: translateX(0);
   }
 }
-
 .animate-fade-in-slide-right {
   animation: fade-in-slide-right 0.5s ease-out forwards;
 }
 
+/* Hover Animation 1 */
+/* New Hover Animation for Container */
 .hover-animation-1 {
   transition: transform 0.3s ease-in-out;
 }
-
 .hover-animation-1:hover {
   transform: scale(1.02);
   box-shadow: 0 0 20px rgba(128, 0, 128, 0.5); /* Purple glow effect */
 }
 
+
+/* Hover Animation 2 */
 .hover-animation-2 {
   transition: transform 0.3s ease-in-out;
 }
-
 .hover-animation-2:hover {
   transform: scale(1.03);
 }
 
+/* Hover Animation 3 */
 .hover-animation-3 {
   transition: transform 0.3s ease-in-out;
 }
-
 .hover-animation-3:hover {
   transform: translateY(-8px);
 }
 
+/* Hover Animation 4 */
 .hover-animation-4 {
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
 .hover-animation-4:hover {
   background-color: #f0f0f0;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-
 
   </style>
 </head>
@@ -156,61 +143,47 @@ body {
 <!-- Navigation bar -->
 <nav class="navbar-bg py-4 fixed top-0 left-0 right-0 z-50">
   <div class="container mx-auto px-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold mr-auto" style="margin-left: -70px;">ClipAI</h1> <!-- Updated -->
+    <h1 class="text-2xl font-bold">ClipAI</h1>
     <div class="hidden md:flex items-center space-x-4">
-      <a href="#hero" class="nav-link text-purple-700 hover:text-purple-900" onclick="smoothScroll('#hero')">Home</a>
-      <a href="#problems" class="nav-link text-purple-700 hover:text-purple-900" onclick="smoothScroll('#problems')">Problems</a>
-      <a href="#features" class="nav-link text-purple-700 hover:text-purple-900" onclick="smoothScroll('#features')">Features</a>
-      <a href="#faq" class="nav-link text-purple-700 hover:text-purple-900" onclick="smoothScroll('#faq')">FAQ</a>
-      <a href="#signup" class="nav-link text-purple-700 hover:text-purple-900" onclick="smoothScroll('#signup')">Sign Up</a>
+      <a href="#hero" class="nav-link text-purple-700 hover:text-purple-900">Home</a>
+      <a href="#problems" class="nav-link text-purple-700 hover:text-purple-900">Problems</a>
+      <a href="#features" class="nav-link text-purple-700 hover:text-purple-900">Features</a>
+      <a href="#faq" class="nav-link text-purple-700 hover:text-purple-900">FAQ</a>
+      <a href="#signup" class="nav-link text-purple-700 hover:text-purple-900">Sign Up</a>
     </div>
   </div>
 </nav>
 
-
 <!-- Hero Section -->
-<section id="hero" class="hero-section py-32 text-center visible">
-  <div class="container mx-auto flex justify-between items-start">
+<section id="hero" class="hero-section py-32 text-center">
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
     <!-- Left Container -->
-    <div class="flex-1 flex flex-col items-center animate-fade-in-slide" id="left-container">
-      <div class="bg-purple-200 rounded-lg shadow-md hover-animation-1" style="margin-top: 25px;">
-        <div style="padding-top: 100px; padding-bottom: 100px;">
-          <h1 class="text-5xl font-bold text-purple-900 mb-4">Welcome to ClipAI</h1>
-          <p class="text-lg text-purple-800 mb-6">Revolutionize your content creation process with our advanced editing solutions.</p>
-          <ul class="text-center text-lg text-purple-800 mb-6">
-            <li>Automated video editing</li>
-            <li>AI-powered tools</li>
-            <li>Efficiency boost for creators</li>
-            <li>Streamline your workflow</li>
-            <li>Enhance content quality</li>
-          </ul>
-          <button class="cta-btn bg-purple-700 hover:bg-purple-800 text-white py-3 px-6 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="document.getElementById('signup').scrollIntoView({behavior: 'smooth'})">Sign Up Now</button>
-        </div>
+    <div class="flex flex-col items-center">
+      <div class="bg-purple-200 rounded-lg shadow-md p-8 hover-animation-1" style="width: 100%;">
+        <h1 class="text-5xl font-bold text-purple-900 mb-4">Welcome to ClipAI</h1>
+        <p class="text-lg text-purple-800 mb-6">Revolutionize your content creation process with our advanced editing solutions.</p>
+        <button class="cta-btn bg-purple-700 hover:bg-purple-800 text-white py-3 px-6 rounded-full">Sign Up Now</button>
       </div>
       <!-- Orange Container -->
       <div class="bg-orange-200 rounded-lg p-8 mt-8 shadow-md hover-animation-2" style="width: 100%;">
-        <span class="text-3xl">⚙️</span>
-        <h2 class="text-xl font-semibold mt-4">Most Efficient Social Media Manager</h2>
+        <h2 class="text-xl font-semibold">Most Efficient Social Media Manager</h2>
         <p class="text-lg text-gray-700">Manage your social media accounts like never before.</p>
       </div>
     </div>
-    <!-- Right Containers -->
-    <div class="flex-1 pl-8 flex flex-col justify-start" id="right-container">
-      <div class="bg-gray-200 rounded-lg p-8 shadow-md animate-fade-in-slide-right hover-animation-3" style="margin-top: 125px;">
+    <!-- Right Container -->
+    <div class="flex flex-col justify-start">
+      <div class="bg-gray-200 rounded-lg p-8 hover-animation-3" style="width: 100%;">
         <!-- Embedded YouTube Video -->
-        <iframe id="video-frame" width="100%" height="315" src="https://www.youtube.com/embed/QRZ_l7cVzzU" title="YouTube video" frameborder="0" allowfullscreen preload="auto"></iframe>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/QRZ_l7cVzzU" title="YouTube video" frameborder="0" allowfullscreen></iframe>
       </div>
       <!-- Additional Container -->
-      <div class="bg-green-100 rounded-lg p-8 mt-8 shadow-md animate-fade-in-slide-right hover-animation-4">
-        <span class="text-3xl">🏆</span>
-        <h2 class="text-xl font-semibold mt-4">#1 in AI Content Creation</h2>
+      <div class="bg-green-100 rounded-lg p-8 mt-8 hover-animation-4" style="width: 100%;">
+        <h2 class="text-xl font-semibold">#1 in AI Content Creation</h2>
         <p class="text-lg text-gray-700">We have ranked across the board for best social media management.</p>
       </div>
     </div>
   </div>
 </section>
-
-
 
 
 
